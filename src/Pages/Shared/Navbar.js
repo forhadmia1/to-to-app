@@ -1,7 +1,11 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Navbar = () => {
+    const [user] = useAuthState(auth)
     return (
         <div className="navbar bg-base-100 container mx-auto">
             <div className="navbar-start">
@@ -12,7 +16,7 @@ const Navbar = () => {
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to={''}>Add Task</Link></li>
                         <li><Link to={''}>Manage Task</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
+                        {!user ? <li><Link to='/login'>Login</Link></li> : <li><button onClick={() => signOut(auth)} class="btn btn-ghost">SignOut</button></li>}
                     </ul>
                 </div>
                 <Link to={'/'} className="btn btn-ghost normal-case text-xl">Todo App</Link>
@@ -21,7 +25,7 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to={''}>Add Task</Link></li>
                     <li><Link to={''}>Manage Task</Link></li>
-                    <li><Link to='/login'>Login</Link></li>
+                    {!user ? <li><Link to='/login'>Login</Link></li> : <li><button onClick={() => signOut(auth)} class="btn btn-ghost">SignOut</button></li>}
                 </ul>
             </div>
         </div>

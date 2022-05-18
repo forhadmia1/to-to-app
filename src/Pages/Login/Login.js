@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
@@ -19,6 +19,7 @@ const Login = () => {
     //form submit 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
+        signInWithEmailAndPassword(data.email, data.password)
     };
 
     //login error handle
@@ -27,15 +28,15 @@ const Login = () => {
         signError = <p className='text-center text-red-500'>{error.code.split('/')[1] || gError.code.split('/')[1]}</p>
     }
     //navigate 
-    // const location = useLocation()
-    // const navigate = useNavigate()
-    // const from = location.state?.from?.pathname || "/";
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
 
-    // useEffect(() => {
-    //     if (token) {
-    //         navigate(from, { replace: true })
-    //     }
-    // }, [token, from, navigate])
+    useEffect(() => {
+        if (user || gUser) {
+            navigate(from, { replace: true })
+        }
+    }, [user, gUser, from, navigate])
 
     //set loading spinner
     if (gLoading || loading) {
