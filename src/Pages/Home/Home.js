@@ -1,25 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate()
     return (
-        <div className='flex justify-center'>
-            <div className='w-80 mt-16'>
-                <h1 className='text-3xl font-bold text-center mb-10'>Add a Task Here</h1>
-                <form className='w-full'>
-                    <div class="form-control w-full max-w-xs">
-                        <label class="label">
-                            <span class="label-text font-semibold">Name:</span>
-                        </label>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                    </div>
-                    <div class="form-control w-full max-w-xs">
-                        <label class="label">
-                            <span class="label-text font-semibold">Description:</span>
-                        </label>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                    </div>
-                    <input type='submit' class="btn btn-primary px-8 mt-4" value={'Submit'} />
-                </form>
+        <div className='flex justify-center items-center h-screen'>
+            <div>
+                <h1 className='text-3xl text-center'>Simple To Do App</h1>
+                <p className='text-md text-center mt-4'>You can add and manage your task here</p>
+                <button onClick={() => navigate('/addTask')} class="btn btn-active btn-primary px-4 mt-4 btn-md block mx-auto">Get Started</button>
             </div>
         </div>
     );
