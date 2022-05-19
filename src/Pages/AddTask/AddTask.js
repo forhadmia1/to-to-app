@@ -11,7 +11,7 @@ const AddTask = () => {
         const description = e.target.description.value;
         const email = user.email;
         const task = { name, description, email }
-        fetch('http://localhost:5000/addTask', {
+        fetch('https://gentle-cliffs-72966.herokuapp.com/addTask', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -34,19 +34,19 @@ const AddTask = () => {
             <div className='w-80 mt-16'>
                 <h1 className='text-3xl font-bold text-center mb-10'>Add a Task Here</h1>
                 <form onSubmit={handleForm} className='w-full'>
-                    <div class="form-control w-full max-w-xs">
-                        <label class="label">
-                            <span class="label-text font-semibold">Name:</span>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text font-semibold">Name:</span>
                         </label>
-                        <input name='name' type="text" placeholder="name" class="input input-bordered w-full max-w-xs" />
+                        <input name='name' type="text" placeholder="name" className="input input-bordered w-full max-w-xs" />
                     </div>
-                    <div class="form-control w-full max-w-xs">
-                        <label class="label">
-                            <span class="label-text font-semibold">Description:</span>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text font-semibold">Description:</span>
                         </label>
-                        <input name='description' type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                        <input name='description' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
                     </div>
-                    <input type='submit' class="btn btn-primary px-8 mt-4" value={'Submit'} />
+                    <input type='submit' className="btn btn-primary px-8 mt-4" value={'Submit'} />
                 </form>
             </div>
         </div>

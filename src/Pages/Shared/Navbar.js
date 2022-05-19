@@ -16,7 +16,7 @@ const Navbar = () => {
                     <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {user && <><li><Link to={'/addTask'}>Add Task</Link></li>
                             <li><Link to={'/manageTask'}>Manage Task</Link></li></>}
-                        {!user ? <li><Link to='/login'>Login</Link></li> : <li><button onClick={() => signOut(auth)} class="btn btn-ghost">SignOut</button></li>}
+                        {!user ? <li><Link to='/login'>Login</Link></li> : <li><button onClick={() => signOut(auth)} className="btn btn-ghost">SignOut</button></li>}
                     </ul>
                 </div>
                 <Link to={'/'} className="btn btn-ghost normal-case text-xl">Todo App</Link>
@@ -25,7 +25,7 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     {user && <><li><Link to={'/addTask'}>Add Task</Link></li>
                         <li><Link to={'/manageTask'}>Manage Task</Link></li></>}
-                    {!user ? <li><Link to='/login'>Login</Link></li> : <li><button onClick={() => signOut(auth)} class="btn btn-ghost">SignOut</button></li>}
+                    {!user ? <li><Link to='/login'>Login</Link></li> : <li><button onClick={() => signOut(auth)} className="btn btn-ghost">SignOut</button></li>}
                 </ul>
             </div>
         </div>

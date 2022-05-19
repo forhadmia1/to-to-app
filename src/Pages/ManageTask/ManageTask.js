@@ -8,7 +8,7 @@ import TaskRow from './TaskRow';
 const ManageTask = () => {
     const [user] = useAuthState(auth);
     const { isLoading, data: tasks, refetch } = useQuery('tasks', () =>
-        fetch(`http://localhost:5000/task/${user.email}`).then(res =>
+        fetch(`https://gentle-cliffs-72966.herokuapp.com/task/${user.email}`).then(res =>
             res.json()
         ))
 
@@ -19,8 +19,8 @@ const ManageTask = () => {
 
 
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>
